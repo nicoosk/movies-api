@@ -1,12 +1,17 @@
-import { Pool } from 'pg'
 import 'dotenv/config'
+import { Pool } from 'pg'
+
+
 const pool = new Pool({
   host: process.env.PGHOST,
-  port: Number(process.env.PGPORT),
+  port: process.env.PGPORT,
   user: process.env.PGUSER,
   password: process.env.PGPASSWORD,
-  database: process.env.PGDATABASE
-})
+  database: process.env.PGDATABASE,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 export class MovieModel {
   static async getAll ({ genre }) {
