@@ -1,0 +1,36 @@
+### Recuperar todas las películas
+GET http://localhost:1234/movies
+
+### Recuperar una película por id
+GET http://localhost:1234/movies/50a5db5b-402f-4a41-aa19-d9b05a632ad0
+
+### Recuperar todas las películas por un género
+GET http://localhost:1234/movies?genre=drama
+
+### Crear una película con POST
+POST http://localhost:1234/movies
+Content-Type: application/json
+
+{
+  "sql": "INSERT INTO movies (id, title, year, director, duration, poster, genre) VALUES (?, ?, ?, ?, ?, ?, ?)",
+  "title": "The Godfather",
+  "year": 1975,
+  "director": "Francis Ford Coppola",
+  "duration": 175,
+  "poster": "https://img.fruugo.com/product/4/49/14441494_max.jpg",
+  "genre": [
+    "Crime",
+    "Drama"
+  ]
+}
+
+### Actualizar una película
+PATCH http://localhost:1234/movies/7b4e9dc9-8db5-40ec-a97d-033f2e5d628c
+Content-Type: application/json
+
+{
+  "year": 1900
+}
+
+### Eliminar una película
+DELETE http://localhost:1234/movies/7b4e9dc9-8db5-40ec-a97d-033f2e5d628c
